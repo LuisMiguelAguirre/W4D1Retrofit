@@ -4,21 +4,22 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.util.TimeUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
+import com.example.admin.w4d1retrofit.fragments.BrokenCloudsFragment;
+import com.example.admin.w4d1retrofit.fragments.ClearSkyFragment;
+import com.example.admin.w4d1retrofit.fragments.FewCloudsFragment;
+import com.example.admin.w4d1retrofit.fragments.MistFragment;
+import com.example.admin.w4d1retrofit.fragments.NoDescriptionFragment;
+import com.example.admin.w4d1retrofit.fragments.RainFragment;
+import com.example.admin.w4d1retrofit.fragments.ScatteredCloudFragment;
+import com.example.admin.w4d1retrofit.fragments.ShowerRainFragment;
+import com.example.admin.w4d1retrofit.fragments.SnowFragment;
+import com.example.admin.w4d1retrofit.fragments.ThunderstormFragment;
 import com.example.admin.w4d1retrofit.model.List;
+import com.example.admin.w4d1retrofit.model.Weather;
 import com.example.admin.w4d1retrofit.model.WeatherResponse;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Timer;
-
-import static android.R.attr.data;
 
 /**
  * Created by Luis Aguirre on 9/6/2017.
@@ -26,14 +27,8 @@ import static android.R.attr.data;
 
 public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
-    public int[] images = {
-            R.drawable.cloudy2,
-            R.drawable.sunny,
-            R.drawable.light_rain,
-            R.drawable.shower3,
-            R.drawable.fog};
-
     LayoutInflater mInflater;
+    java.util.List<List> data;// = mWeatherResponse.getList();
     private Context mContext;
     private View mView;
     private WeatherResponse mWeatherResponse;
@@ -41,11 +36,13 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
     public WeatherPagerAdapter(FragmentManager fragmentManager, WeatherResponse weatherResponse) {
         super(fragmentManager);
         this.mWeatherResponse = weatherResponse;
+        data = mWeatherResponse.getList();
+
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return mWeatherResponse.getList().size();
     }
 
 /*    @Override
@@ -56,56 +53,56 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        java.util.List<List> data = mWeatherResponse.getList();
-        for (List date:data) {
-            //Log.d("DtTxt", "run: " + date.getDtTxt().substring(0,10));
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String currentDate = format.format(Calendar.getInstance().getTime());
+        String convertedDate = "";
+        Fragment fragment = NoDescriptionFragment.newInstance("", "Page # 1");
 
-            if (currentDate == date.getDtTxt().substring(0,10)){
-                Log.d("TAG", "getItem: " + "igualessss");
-                break;
-            }
+        // if (convertedDate.equals(date.getDtTxt().substring(0, 10))) {
+        java.util.List<Weather> weather = data.get(position).getWeather();
+
+        if (weather.get(0).getDescription().equals("clear sky")) {
+            fragment = ClearSkyFragment.newInstance("", "Page # 1");
         }
 
-
-        switch (position) {
-            case 0: // Fragment # 0 - This will show FirstFragment
-                return SunnyFragment.newInstance("", "Page # 1");
-            case 1: // Fragment # 0 - This will show FirstFragment different title
-                return FogFragment.newInstance("", "Page # 2");
-            case 2: // Fragment # 0 - This will show FirstFragment different title
-                return CloudyFragment.newInstance("", "Page # 2");
-            case 3: // Fragment # 0 - This will show FirstFragment different title
-                return ShowerFragment.newInstance("", "Page # 2");
-            case 4: // Fragment # 0 - This will show FirstFragment different title
-                return StormFragment.newInstance("", "Page # 2");
-
-
-            default:
-                return null;
+        if (weather.get(0).getDescription().equals("few clouds")) {
+            fragment = FewCloudsFragment.newInstance("", "Page # 1");
         }
+
+        if (weather.get(0).getDescription().equals("scattered clouds")) {
+            fragment = ScatteredCloudFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("broken clouds")) {
+            fragment = BrokenCloudsFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("shower rain")) {
+            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("light rain")) {
+            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("moderate rain")) {
+            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("rain")) {
+            fragment = RainFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("thunderstorm")) {
+            fragment = ThunderstormFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("snow")) {
+            fragment = SnowFragment.newInstance("", "Page # 1");
+        }
+
+        if (weather.get(0).getDescription().equals("mist")) {
+            fragment = MistFragment.newInstance("", "Page # 1");
+
+        }
+    return fragment;
     }
-
-
-
-
-    /*@Override
-    public Object instantiateItem(ViewGroup container, int position) {
-
-
-        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = mInflater.inflate(R.layout.activity_weather, container, false);
-
-
-        container.addView(view);
-
-        return view;
-
-    }
-*/
-    /*@Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
-    }*/
 }

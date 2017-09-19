@@ -1,4 +1,4 @@
-package com.example.admin.w4d1retrofit;
+package com.example.admin.w4d1retrofit.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.admin.w4d1retrofit.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CloudyFragment.OnFragmentInteractionListener} interface
+ * {@link ClearSkyFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CloudyFragment#newInstance} factory method to
+ * Use the {@link ClearSkyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CloudyFragment extends Fragment {
+public class ClearSkyFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +30,7 @@ public class CloudyFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public CloudyFragment() {
+    public ClearSkyFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +40,11 @@ public class CloudyFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CloudyFragment.
+     * @return A new instance of fragment ClearSkyFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CloudyFragment newInstance(String param1, String param2) {
-        CloudyFragment fragment = new CloudyFragment();
+    public static ClearSkyFragment newInstance(String param1, String param2) {
+        ClearSkyFragment fragment = new ClearSkyFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +65,7 @@ public class CloudyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cloudy, container, false);
+        return inflater.inflate(R.layout.fragment_clear_sky, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
