@@ -3,10 +3,12 @@ package com.example.admin.w4d1retrofit.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.admin.w4d1retrofit.R;
 
@@ -90,6 +92,18 @@ public class ShowerRainFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView textViewTemperature = (TextView)view.findViewById(R.id.temperature_shower_rain_id);
+        TextView textViewSky=(TextView)view.findViewById(R.id._sky_shower_rain_id);
+
+
+        textViewTemperature.setText(mParam2 + "K");
+        textViewSky.setText(mParam1);
     }
 
     /**

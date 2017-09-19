@@ -1,12 +1,48 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             android:layout_height="wrap_content"
              tools:context="com.example.admin.w4d1retrofit.fragments.ClearSkyFragment">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/clearsky"/>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view_clear_sky_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/clearsky"/>
+
+        <ImageView
+            android:id="@+id/image_view_clear_sky_sun_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sun"/>
+
+        <TextView
+            android:id="@+id/temperature_clear_sky_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="Temperature"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:textAllCaps="true"
+            android:id="@+id/_sky_clear_sky_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temperature_clear_sky_id"
+            android:layout_centerInParent="true"
+            android:text="Sky"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="30sp"
+            />
+    </RelativeLayout>
 
 </FrameLayout>

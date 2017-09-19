@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Luis Aguirre on 9/6/2017.
  */
 
-class Main {
+public class Main {
     /**
      * temp : 286.67
      * temp_min : 281.556

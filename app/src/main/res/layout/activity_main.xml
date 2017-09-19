@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/holo_blue_dark"
     tools:context="com.example.admin.w4d1retrofit.MainActivity">
+
+    <TextView
+        android:id="@+id/text_view_city_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textSize="40sp"
+        />
+
+    <TextView
+        android:id="@+id/text_view_country_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_city_id"
+        android:text="Country"
+        android:textSize="40sp"
+        />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
     </android.support.v4.view.ViewPager>
 
     <me.relex.circleindicator.CircleIndicator
@@ -20,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="480dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp"/>
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp"/>
 
-</RelativeLayout>
+</LinearLayout>

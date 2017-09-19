@@ -18,6 +18,7 @@ import com.example.admin.w4d1retrofit.fragments.ShowerRainFragment;
 import com.example.admin.w4d1retrofit.fragments.SnowFragment;
 import com.example.admin.w4d1retrofit.fragments.ThunderstormFragment;
 import com.example.admin.w4d1retrofit.model.List;
+import com.example.admin.w4d1retrofit.model.Main;
 import com.example.admin.w4d1retrofit.model.Weather;
 import com.example.admin.w4d1retrofit.model.WeatherResponse;
 
@@ -45,62 +46,56 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
         return mWeatherResponse.getList().size();
     }
 
-/*    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        this.mView = view;
-        return (view == (LinearLayout) object);
-    }*/
-
     @Override
     public Fragment getItem(int position) {
         String convertedDate = "";
         Fragment fragment = NoDescriptionFragment.newInstance("", "Page # 1");
 
-        // if (convertedDate.equals(date.getDtTxt().substring(0, 10))) {
         java.util.List<Weather> weather = data.get(position).getWeather();
+        double temp = data.get(position).getMain().getTemp();
 
         if (weather.get(0).getDescription().equals("clear sky")) {
-            fragment = ClearSkyFragment.newInstance("", "Page # 1");
+            fragment = ClearSkyFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("few clouds")) {
-            fragment = FewCloudsFragment.newInstance("", "Page # 1");
+            fragment = FewCloudsFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("scattered clouds")) {
-            fragment = ScatteredCloudFragment.newInstance("", "Page # 1");
+            fragment = ScatteredCloudFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("broken clouds")) {
-            fragment = BrokenCloudsFragment.newInstance("", "Page # 1");
+            fragment = BrokenCloudsFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("shower rain")) {
-            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+            fragment = ShowerRainFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("light rain")) {
-            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+            fragment = ShowerRainFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("moderate rain")) {
-            fragment = ShowerRainFragment.newInstance("", "Page # 1");
+            fragment = ShowerRainFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("rain")) {
-            fragment = RainFragment.newInstance("", "Page # 1");
+            fragment = RainFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("thunderstorm")) {
-            fragment = ThunderstormFragment.newInstance("", "Page # 1");
+            fragment = ThunderstormFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("snow")) {
-            fragment = SnowFragment.newInstance("", "Page # 1");
+            fragment = SnowFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
         }
 
         if (weather.get(0).getDescription().equals("mist")) {
-            fragment = MistFragment.newInstance("", "Page # 1");
+            fragment = MistFragment.newInstance(weather.get(0).getDescription(), String.valueOf(temp));
 
         }
     return fragment;

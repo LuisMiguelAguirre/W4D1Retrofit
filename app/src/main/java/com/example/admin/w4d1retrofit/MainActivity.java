@@ -1,9 +1,10 @@
 package com.example.admin.w4d1retrofit;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.admin.w4d1retrofit.fragments.BrokenCloudsFragment;
 import com.example.admin.w4d1retrofit.fragments.ClearSkyFragment;
@@ -20,8 +21,6 @@ import com.example.admin.w4d1retrofit.model.WeatherResponse;
 import java.io.IOException;
 
 import me.relex.circleindicator.CircleIndicator;
-
-import static android.media.CamcorderProfile.get;
 
 public class MainActivity extends AppCompatActivity implements
         BrokenCloudsFragment.OnFragmentInteractionListener,
@@ -40,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements
     WeatherPagerAdapter mAdapter;
     ViewPager mViewPager;
     CircleIndicator mCircleIndicator;
-
+    TextView mTextView_city;
+    TextView mTextView_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements
 
         mViewPager = (ViewPager) findViewById(R.id.view_pager_id);
         mCircleIndicator = (CircleIndicator) findViewById(R.id.circle_indicator_id);
+        mTextView_city = (TextView) findViewById(R.id.text_view_city_id);
+        mTextView_country = (TextView) findViewById(R.id.text_view_country_id);
 
         retrofitCall();
 
@@ -64,9 +66,12 @@ public class MainActivity extends AppCompatActivity implements
                 try {
                     final WeatherResponse weatherResponse = (callRepos.execute().body());
 
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            mTextView_city.setText("City: " + weatherResponse.getCity().getName());
+                            mTextView_country.setText("Country: " + weatherResponse.getCity().getCountry());
                             mAdapter = new WeatherPagerAdapter(getSupportFragmentManager(), weatherResponse);
                             mViewPager.setAdapter(mAdapter);
                             mCircleIndicator.setViewPager(mViewPager);

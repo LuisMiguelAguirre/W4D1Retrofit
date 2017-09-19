@@ -1,12 +1,49 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             android:layout_height="wrap_content"
              tools:context="com.example.admin.w4d1retrofit.fragments.ShowerRainFragment">
 
-    <ImageView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/showersrain"/>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_view_shower_rain_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/showersrain"/>
+
+        <ImageView
+            android:id="@+id/image_view_shower_rain_sun_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/shower"/>
+
+        <TextView
+            android:id="@+id/temperature_shower_rain_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="Temperature"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:textAllCaps="true"
+            android:id="@+id/_sky_shower_rain_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temperature_shower_rain_id"
+            android:layout_centerInParent="true"
+            android:text="Sky"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="30sp"
+            />
+    </RelativeLayout>
 
 </FrameLayout>
